@@ -8,3 +8,4 @@ alias gs="git status"
 alias c=comp_cpp
 alias c_opencv=comp_opencv
 alias c_cv=comp_cv
+alias cw=count_work

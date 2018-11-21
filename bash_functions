@@ -1,8 +1,8 @@
-function comp_cpp(){
+function comp_cpp() {
   g++ -g -O2 --std=gnu++14 -Wall -Wfatal-errors -pedantic $1 -o ${1%.*} -fopenmp -lpthread
 }
 
-function comp_opencv(){
+function comp_opencv() {
   {
     echo "cmake_minimum_required( VERSION 2.8 )"
     echo "project( ${1%.*} )"
@@ -16,7 +16,7 @@ function comp_opencv(){
   make
 }
 
-function comp_cv(){
+function comp_cv() {
   {
     echo "cmake_minimum_required( VERSION 2.8 )"
     echo ""
@@ -43,3 +43,10 @@ function comp_cv(){
   cd ..
 }
 
+function count_work() {
+  find . -type d \
+  \( -path ./build -o -path ./.git -o -path ./src/libs \) \
+  -prune -o -type f \
+  \( -name '*.txt' -o -name '*.md' -o -name '*.cc' -o -name '*.h' \) -print0 | \
+  wc -l --files0-from=-
+}
