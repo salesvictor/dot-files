@@ -1,9 +1,9 @@
-"""""""""""""""""""""""""""""""""""""
-" Allan MacGregor Vimrc configuration 
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""
+" Victor Sales Vimrc configuration
+""""""""""""""""""""""""""""""""""
 set encoding=utf8
 
-"""" START Vundle Configuration 
+"""" START Vundle Configuration
 
 " Disable file type for vundle
 filetype off                  " required
@@ -19,7 +19,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'wesQ3/vim-windowswap'
-Plugin 'SirVer/ultisnips'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
 Plugin 'godlygeek/tabular'
@@ -30,8 +29,10 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tpope/vim-speeddating'
 
-" Generic Programming Support 
+" Generic Programming Support
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
 Plugin 'Raimondi/delimitMate'
 Plugin 'janko-m/vim-test'
 Plugin 'maksimr/vim-jsbeautify'
@@ -81,7 +82,7 @@ Plugin 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-"""" END Vundle Configuration 
+"""" END Vundle Configuration
 
 """""""""""""""""""""""""""""""""""""
 " Configuration Section
@@ -89,6 +90,9 @@ filetype plugin indent on    " required
 set nowrap
 
 set backspace=indent,eol,start
+
+set ruler
+set showcmd
 
 " Show linenumbers
 set number
@@ -98,10 +102,15 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+
 " Set indentation
 set autoindent
 set smartindent
 set cindent
+
+" Break lines
+set textwidth=80
 
 " Always display the status line
 set laststatus=2
@@ -109,14 +118,14 @@ set laststatus=2
 " Enable Elite mode, No ARRRROWWS!!!!
 let g:elite_mode=1
 
-" Devicons configuration 
+" Devicons configuration
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 
 " Enable highlighting of the current line
 set cursorline
 
-" Theme and Styling 
+" Theme and Styling
 syntax on
 set t_Co=256
 
@@ -133,10 +142,10 @@ let g:spacegray_italicize_comments = 1
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1 
+let g:airline_powerline_fonts = 1
 let g:airline_theme='hybrid'
 let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 
+let g:hybrid_reduced_contrast = 1
 
 " Syntastic Configuration
 set statusline+=%#warningmsg#
@@ -147,7 +156,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 
-" Vim-PDV Configuration 
+" Vim-PDV Configuration
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 
 " Markdown Syntax Support
@@ -170,11 +179,18 @@ let g:languagetool_jar  = '/opt/languagetool/languagetool-commandline.jar'
 "   autocmd FileType text         call pencil#init()
 " augroup END
 
+" make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:ycm_key_list_select_completion = []
+let g:ycm_key_list_previous_completion = []
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
 " Vim-UtilSnips Configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical" " If you want :UltiSnipsEdit to split your window.
 
 " Vim-Test Configuration
@@ -226,6 +242,11 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 """""""""""""""""""""""""""""""""""""
 " Mappings configurationn
 """""""""""""""""""""""""""""""""""""
+" Fast save-quit-all
+map ZX <ESC>:wqa<CR>
+imap ZX <ESC>:wqa<CR>
+
+" Lateral toggles
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :TagbarToggle<CR>
 
@@ -241,7 +262,7 @@ xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
 " Shortcuts
-nnoremap <Leader>o :Files<CR> 
+nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>O :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 
@@ -265,10 +286,10 @@ autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
 
 " Disable arrow movement, resize splits instead.
 if get(g:, 'elite_mode')
-	nnoremap <Up>    :resize +2<CR>
-	nnoremap <Down>  :resize -2<CR>
-	nnoremap <Left>  :vertical resize +2<CR>
-	nnoremap <Right> :vertical resize -2<CR>
+  nnoremap <Up>    :resize +2<CR>
+  nnoremap <Down>  :resize -2<CR>
+  nnoremap <Left>  :vertical resize +2<CR>
+  nnoremap <Right> :vertical resize -2<CR>
 endif
 
 map <silent> <LocalLeader>ws :highlight clear ExtraWhitespace<CR>
