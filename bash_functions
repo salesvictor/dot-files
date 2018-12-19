@@ -47,6 +47,6 @@ function count_work() {
   find . -type d \
   \( -path ./build -o -path ./.git -o -path ./src/libs \) \
   -prune -o -type f \
-  \( -name '*.txt' -o -name '*.md' -o -name '*.cc' -o -name '*.h' \) -print0 | \
+  \( -name '*.txt' -o -name '*.cmake' -o -name '*.md' -o -name '*.cc' -o -name '*.h' \) -print0 | \
   wc -l --files0-from=-
 }
