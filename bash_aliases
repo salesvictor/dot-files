@@ -12,6 +12,9 @@ alias moon="curl wttr.in/moon"
 
 alias vpn="nordvpn c Canada"
 
+alias please="sudo"
+alias fuck='sudo $(history -p \!\!)'
+
 alias c=comp_cpp
 alias c_opencv=comp_opencv
 alias c_cv=comp_cv
