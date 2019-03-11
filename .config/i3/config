@@ -23,7 +23,8 @@ font pango:Ubuntu Nerd Font Light 10
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+set $term alacritty
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -200,8 +201,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bindsym $mod+x exec $HOME/.config/i3/aux/lock.sh
 bindsym $mod+Shift+x exec shutdown 0
 
-# Web browser (Google Chrome)
-set $webapp google-chrome-stable
+# Web browser (brave)
+set $webapp brave
 bindsym $mod+w exec $webapp
 
 # Bind programs to workspaces
@@ -210,12 +211,14 @@ bindsym $mod+w exec $webapp
 # Handful calculator
 for_window [instance="awesome_calc"] floating enable, move scratchpad
 bindsym $mod+m [instance="awesome_calc"] scratchpad show
-exec --no-startup-id urxvt -name awesome_calc -geometry 32x8 -e bc -lq
+# exec --no-startup-id urxvt -name awesome_calc -geometry 32x8 -e bc -lq
+exec --no-startup-id alacritty -t awesome_calc -d 32x8 -e bc -lq
 
 # Handful tty
 for_window [instance="awesome_tty"] floating enable, move scratchpad
 bindsym $mod+Shift+Return [instance="awesome_tty"] scratchpad show
-exec --no-startup-id urxvt -name awesome_tty -geometry 36x12
+# exec --no-startup-id urxvt -name awesome_tty -geometry 80x30
+exec --no-startup-id alacritty -t awesome_tty -d 80x30
 
 # Compositor
 #exec_always --no-startup-id compton --backend glx -cCGf -i 0.5 --blur-method kawase --blur-strength 5 --blur-background -r 3 -o 0.5 -l 0 -t 0
