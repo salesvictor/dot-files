@@ -50,7 +50,7 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = volume backlight battery cpu memory
+modules-left = volume backlight battery memory cpu 
 modules-center = i3
 modules-right = wlan date time
 
@@ -170,7 +170,6 @@ label-disconnected =  Not Connected
 [module/cpu]
 type = internal/cpu
 label =  %percentage%%
-
 
 [module/memory]
 type = internal/memory

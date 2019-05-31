@@ -209,16 +209,22 @@ bindsym $mod+w exec $webapp
 #assign [class="URxvt"] $ws2
 
 # Handful calculator
-for_window [title="awesome_calc"] floating enable, move scratchpad
-bindsym $mod+m [title="awesome_calc"] scratchpad show
-# exec --no-startup-id urxvt -name awesome_calc -geometry 32x8 -e bc -lq
-exec --no-startup-id alacritty -t awesome_calc -d 32 8 -e bc -lq
+for_window [instance="awesome_calc"] floating enable, move scratchpad
+bindsym $mod+m [instance="awesome_calc"] scratchpad show
+exec --no-startup-id urxvt -name awesome_calc -geometry 32x8 -e R -q
+
+# for_window [title="awesome_calc"] floating enable, move scratchpad
+# bindsym $mod+m [title="awesome_calc"] scratchpad show
+# exec --no-startup-id alacritty -t awesome_calc -d 32 8 -e bc -lq
 
 # Handful tty
-for_window [title="awesome_tty"] floating enable, move scratchpad
-bindsym $mod+Shift+Return [title="awesome_tty"] scratchpad show
-# exec --no-startup-id urxvt -name awesome_tty -geometry 80x30
-exec --no-startup-id alacritty -t awesome_tty -d 80 30
+for_window [instance="awesome_tty"] floating enable, move scratchpad
+bindsym $mod+Shift+Return [instance="awesome_tty"] scratchpad show
+exec --no-startup-id urxvt -name awesome_tty -geometry 80x30
+
+# for_window [title="awesome_tty"] floating enable, move scratchpad
+# bindsym $mod+Shift+Return [title="awesome_tty"] scratchpad show
+# exec --no-startup-id alacritty -t awesome_tty -d 80 30
 
 # Compositor
 #exec_always --no-startup-id compton --backend glx -cCGf -i 0.5 --blur-method kawase --blur-strength 5 --blur-background -r 3 -o 0.5 -l 0 -t 0

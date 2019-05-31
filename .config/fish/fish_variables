@@ -4,6 +4,9 @@ SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR _fish_abbr_bj:bundle\x20exec\x20jekyll\x20serve\x20\x2d\x2dincremental
+SETUVAR _fish_abbr_fr:flask\x20run
+SETUVAR _fish_abbr_https:python\x20\x2dm\x20http\x2eserver
+SETUVAR _fish_abbr_s:startx
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7

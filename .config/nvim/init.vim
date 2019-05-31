@@ -7,6 +7,11 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+set hidden
+
+inoremap jk <Esc>
+inoremap kj <Esc>
+
 call plug#begin('~/.local/share/nvim/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'itchyny/vim-gitbranch'
@@ -15,6 +20,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'joshdick/onedark.vim'
   Plug 'junegunn/goyo.vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 " For lighline.vim
@@ -57,3 +63,14 @@ set wildmenu
 
 " Tags
 command! MakeTags !ctags -R .
+
+" File Explorer
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
