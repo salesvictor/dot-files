@@ -57,10 +57,12 @@ let g:onedark_terminal_italics=1
 colorscheme onedark
 let g:lightline.colorscheme = 'onedark'
 
-" 80 column limit
-set colorcolumn=80
+" column markers
+set colorcolumn=80,120
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.*/
+highlight NoWay ctermbg=red ctermfg=white guibg=darkred
+2match NoWay /\%121v.*/
 
 " Fuzzy finding
 set path+=**
